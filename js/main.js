@@ -116,12 +116,15 @@
   const form       = document.getElementById('bookingForm');
   const submitBtn  = document.getElementById('submitBtn');
 
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwhtk1ic1tRSojidOc_IXQQOiNBDQSE1S54cQmCiNFqUTea7gOuVS3mxbppQasn8JmL/exec';
+
   if (form && submitBtn) {
     form.addEventListener('submit', function (e) {
-      // Validación básica antes de enviar
+      e.preventDefault();
+
+      // Validación
       const required = form.querySelectorAll('[required]');
       let valid = true;
-
       required.forEach(field => {
         field.style.borderColor = '';
         if (!field.value.trim()) {
@@ -129,25 +132,46 @@
           valid = false;
         }
       });
-
       if (!valid) {
-        e.preventDefault();
-        const firstInvalid = form.querySelector('[required]:invalid, [style*="ef4444"]');
+        const firstInvalid = form.querySelector('[style*="ef4444"]');
         if (firstInvalid) firstInvalid.focus();
         showNotification('Por favor completa todos los campos obligatorios.', 'error');
         return;
       }
 
-      // Feedback visual al enviar
+      // Recopilar datos del formulario
+      const data = {
+        nombre:    form.querySelector('[name="Nombre"]').value,
+        email:     form.querySelector('[name="Correo"]').value,
+        telefono:  form.querySelector('[name="Telefono"]').value,
+        pasajeros: form.querySelector('[name="Pasajeros"]').value,
+        origen:    form.querySelector('[name="Origen"]').value,
+        destino:   form.querySelector('[name="Destino"]').value,
+        fecha:     form.querySelector('[name="Fecha"]').value,
+        hora:      form.querySelector('[name="Hora"]').value,
+        mensaje:   form.querySelector('[name="Notas"]').value,
+      };
+
       submitBtn.textContent = 'Enviando...';
       submitBtn.disabled    = true;
 
-      // Re-habilitar tras 3 s (el mailto abre el cliente de correo)
-      setTimeout(() => {
+      fetch(SHEET_URL, {
+        method: 'POST',
+        mode:   'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body:   JSON.stringify(data),
+      })
+      .then(() => {
         submitBtn.textContent = 'Solicitar Cotización →';
         submitBtn.disabled    = false;
-        showNotification('¡Gracias! También puedes contactarnos por WhatsApp para una respuesta inmediata.', 'success');
-      }, 2500);
+        form.reset();
+        showNotification('¡Solicitud enviada! Te responderemos a la brevedad. También puedes escribirnos por WhatsApp.', 'success');
+      })
+      .catch(() => {
+        submitBtn.textContent = 'Solicitar Cotización →';
+        submitBtn.disabled    = false;
+        showNotification('Error al enviar. Por favor contáctanos por WhatsApp.', 'error');
+      });
     });
 
     // Limpiar error al escribir
