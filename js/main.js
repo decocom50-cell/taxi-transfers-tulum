@@ -165,7 +165,7 @@
         submitBtn.textContent = 'Solicitar Cotización →';
         submitBtn.disabled    = false;
         form.reset();
-        showNotification('¡Solicitud enviada! Te responderemos a la brevedad. También puedes escribirnos por WhatsApp.', 'success');
+        showModal();
       })
       .catch(() => {
         submitBtn.textContent = 'Solicitar Cotización →';
@@ -179,6 +179,32 @@
       field.addEventListener('input', () => { field.style.borderColor = ''; });
     });
   }
+
+
+  /* ===== MODAL DE CONFIRMACIÓN ===== */
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalClose   = document.getElementById('modalClose');
+
+  function showModal() {
+    modalOverlay.classList.add('active');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', e => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
 
 
   /* ===== NOTIFICACIONES TOAST ===== */
