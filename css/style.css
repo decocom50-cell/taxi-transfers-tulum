@@ -1260,6 +1260,82 @@ address { font-style: normal; }
 /* ═══════════════════════════════════════
    BOTÓN FLOTANTE WHATSAPP
 ═══════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   MODAL DE CONFIRMACIÓN
+═══════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--sh-xl);
+  transform: translateY(20px) scale(.97);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+}
+.modal-overlay.active .modal {
+  transform: translateY(0) scale(1);
+}
+.modal__icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #1ebe5d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 8px 24px rgba(37,211,102,.35);
+}
+.modal__title {
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: .75rem;
+}
+.modal__text {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+.modal__close {
+  display: block;
+  width: 100%;
+  margin-top: .75rem;
+  padding: .75rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  color: var(--text-muted);
+  font-family: var(--ff);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: var(--t);
+}
+.modal__close:hover {
+  background: var(--gray-100);
+  color: var(--navy);
+}
+
 .wa-float {
   position: fixed;
   bottom: 2rem; right: 2rem;
