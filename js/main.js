@@ -116,7 +116,7 @@
   const form       = document.getElementById('bookingForm');
   const submitBtn  = document.getElementById('submitBtn');
 
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwhtk1ic1tRSojidOc_IXQQOiNBDQSE1S54cQmCiNFqUTea7gOuVS3mxbppQasn8JmL/exec';
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzvhFOLdoQD-uMk0rMXjwPR2-XsNBXqQt_-EHAl8HHdtHMtOCToQCkADH7bKIS7m2UM/exec';
 
   if (form && submitBtn) {
     form.addEventListener('submit', function (e) {
