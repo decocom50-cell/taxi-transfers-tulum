@@ -1419,86 +1419,113 @@ address { font-style: normal; }
    RESPONSIVE — Mobile ≤768px
 ═══════════════════════════════════════ */
 @media (max-width: 768px) {
-  :root { --header-h: 62px; --gap: 1rem; }
+  :root { --header-h: 68px; --gap: 1.1rem; }
   .section { padding: 3rem 0; }
 
-  /* Nav */
+  /* ── Nav simplificado ── */
+  .nav__toggle { display: none; }
+  .nav__wa     { display: none; }
+  .nav__logo img { width: 52px; height: 52px; }
   .nav__menu {
-    position: fixed;
-    top: var(--header-h); inset-inline: 0;
-    background: var(--navy-2);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem var(--gap);
-    gap: 0;
-    transform: translateY(-110%);
-    transition: transform .35s cubic-bezier(.4,0,.2,1);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    z-index: 999;
-    justify-content: flex-start;
+    position: static;
+    background: transparent;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: .85rem;
+    transform: none !important;
+    transition: none;
+    border: none;
+    flex: none;
+    justify-content: flex-end;
   }
-  .nav__menu.open { transform: translateY(0); }
+  /* Ocultar: Inicio, Servicios, Destinos — dejar Cotizar y Reseñas */
+  .nav__menu li:nth-child(1),
+  .nav__menu li:nth-child(3),
+  .nav__menu li:nth-child(4) { display: none; }
   .nav__link {
-    width: 100%;
-    padding: .85rem 0;
-    font-size: var(--fs-md);
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    color: rgba(255,255,255,.8);
+    width: auto;
+    padding: .25rem .1rem;
+    border: none;
+    font-size: var(--fs-sm);
+    color: rgba(255,255,255,.9);
   }
-  .nav__toggle { display: flex; }
-  .nav__wa span { display: none; }
-  .nav__wa { padding: .45rem .7rem; }
 
-  /* Hero */
+  /* ── Hero ── */
   .hero { min-height: auto; }
+  .hero__content {
+    text-align: left;
+    padding: 2rem 0 4rem;
+  }
   .hero__title {
-    font-size: clamp(1.55rem, 7vw, 2rem);
-    letter-spacing: -.01em;
-    line-height: 1.12;
+    font-size: clamp(2rem, 8.5vw, 2.6rem);
+    letter-spacing: -.02em;
+    line-height: 1.1;
   }
   .hero__subtitle {
-    font-size: .7rem;
-    letter-spacing: .12em;
-    margin-bottom: 1.5rem;
+    font-size: .72rem;
+    letter-spacing: .11em;
+    margin: 0 0 1.5rem;
   }
-  .hero__content { padding: 2rem 0 3.5rem; }
   .hero__cta {
     flex-direction: column;
-    align-items: center;
-    gap: .6rem;
-    margin-bottom: 1.5rem;
+    align-items: stretch;
+    gap: .65rem;
+    margin-bottom: 1.75rem;
   }
   .hero__cta .btn {
     width: 100%;
-    max-width: 270px;
+    max-width: none;
     justify-content: center;
-    padding: .8rem 1.25rem;
+    padding: .95rem 1.5rem;
     font-size: var(--fs-md);
   }
+
+  /* Badges: grid 2 columnas + TripAdvisor abajo centrado */
   .hero__badges {
-    flex-direction: column;
-    align-items: center;
-    padding: .85rem 1.25rem;
-    gap: .4rem;
-    border-radius: var(--r-lg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    width: 100%;
+    border-radius: 0;
+    row-gap: .5rem;
   }
   .hero__badge-sep { display: none; }
   .hero__badge-item {
-    padding: .1rem 0;
-    font-size: .75rem;
-    gap: .4rem;
-    width: 100%;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: var(--r);
+    padding: .6rem .75rem;
+    font-size: .72rem;
+    gap: .35rem;
+    justify-content: center;
+    width: auto;
+  }
+  /* TripAdvisor (1er hijo) va abajo, ancho completo */
+  .hero__badge-item:nth-child(1) {
+    grid-column: 1 / -1;
+    order: 3;
     justify-content: center;
   }
+  /* Servicio 24/7 (3er hijo) arriba derecha */
+  .hero__badge-item:nth-child(3) { order: 2; }
+  /* Precio fijo (5to hijo) arriba izquierda */
+  .hero__badge-item:nth-child(5) { order: 1; }
+
   .hero__badge-item svg { width: 15px; height: 15px; }
   .badge-stars svg { width: 13px; height: 13px; }
 
-  /* Section titles */
-  .section__title { font-size: var(--fs-2xl); }
-  .section__desc  { font-size: var(--fs-md); }
+  /* ── Secciones generales ── */
+  .section__title  { font-size: var(--fs-2xl); }
+  .section__desc   { font-size: var(--fs-md); }
   .section__header { margin-bottom: 2rem; }
 
-  /* Booking */
+  /* ── Booking ── */
   .booking { padding: 3rem 0; }
   .form-row { grid-template-columns: 1fr; }
   .booking__form-card { padding: 1.25rem; border-radius: var(--r-lg); }
@@ -1506,11 +1533,11 @@ address { font-style: normal; }
   .booking__quick-contact { flex-direction: column; gap: .55rem; }
   .quick-btn { width: 100%; justify-content: flex-start; padding: .7rem 1rem; }
 
-  /* Services */
+  /* ── Services ── */
   .services__grid { grid-template-columns: 1fr; }
   .svc-card__img  { height: 180px; }
 
-  /* Gallery */
+  /* ── Gallery ── */
   .gallery__grid { grid-template-columns: 1fr 1fr; gap: .6rem; }
   .gallery__item       { height: 150px; }
   .gallery__item--tall { grid-row: span 2; }
@@ -1518,21 +1545,21 @@ address { font-style: normal; }
   .gallery__caption h3 { font-size: var(--fs-md); }
   .gallery__caption p  { font-size: var(--fs-xs); }
 
-  /* Why */
+  /* ── Why us ── */
   .why-grid { grid-template-columns: 1fr; gap: 1rem; }
   .why-card { padding: 1.35rem; }
   .why-card__icon { font-size: 1.75rem; }
 
-  /* Reviews */
+  /* ── Reviews ── */
   .reviews__carousel { padding: 0 2.5rem 3rem; }
   .carousel__btn { width: 36px; height: 36px; }
 
-  /* Footer */
+  /* ── Footer ── */
   .footer { padding: 3rem 0 1.75rem; }
   .footer__grid { grid-template-columns: 1fr; gap: 1.75rem; }
   .footer__bottom { flex-direction: column; text-align: center; }
 
-  /* WhatsApp float */
+  /* ── WhatsApp float ── */
   .wa-float span { display: none; }
   .wa-float { padding: 1rem; border-radius: 50%; bottom: 1.25rem; right: 1.25rem; }
 }
