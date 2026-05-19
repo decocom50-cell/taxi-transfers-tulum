@@ -1593,6 +1593,21 @@ address { font-style: normal; }
   /* ── WhatsApp float ── */
   .wa-float span { display: none; }
   .wa-float { padding: 1rem; border-radius: 50%; bottom: 1.25rem; right: 1.25rem; }
+
+  /* ── Anti-overflow iOS / botones largos ── */
+  main {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  .btn {
+    white-space: normal !important;
+    text-align: center;
+    line-height: 1.3;
+  }
+  p, a, span, h1, h2, h3, h4, li {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
 }
 
 /* ═══════════════════════════════════════
