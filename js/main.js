@@ -303,6 +303,27 @@
   });
 
 
+  /* ===== CARRUSEL GALERÍA MÓVIL ===== */
+  const galleryGrid = document.getElementById('galleryGrid');
+  const galleryPrev = document.getElementById('galleryPrev');
+  const galleryNext = document.getElementById('galleryNext');
+
+  if (galleryGrid && galleryPrev && galleryNext) {
+    function getGalleryCardWidth() {
+      const item = galleryGrid.querySelector('.gallery__item');
+      if (!item) return 260;
+      const gap = parseFloat(getComputedStyle(galleryGrid).gap) || 14;
+      return item.offsetWidth + gap;
+    }
+    galleryPrev.addEventListener('click', () => {
+      galleryGrid.scrollBy({ left: -getGalleryCardWidth(), behavior: 'smooth' });
+    });
+    galleryNext.addEventListener('click', () => {
+      galleryGrid.scrollBy({ left: getGalleryCardWidth(), behavior: 'smooth' });
+    });
+  }
+
+
   /* ===== SMOOTH SCROLL para navegadores antiguos ===== */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
