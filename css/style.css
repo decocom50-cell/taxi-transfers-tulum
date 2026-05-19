@@ -448,31 +448,29 @@ address { font-style: normal; }
 .hero__badges {
   display: inline-flex;
   align-items: center;
-  gap: 0;
+  gap: 1rem;
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.1);
   border-radius: var(--r-xl);
   backdrop-filter: blur(8px);
-  padding: 1.1rem 2rem;
+  padding: 1rem 1.75rem;
   flex-wrap: wrap;
   justify-content: center;
   row-gap: .75rem;
 }
-.hero__badge-item {
+.hero__badge-card,
+.hero__badge-ta {
   display: flex;
   align-items: center;
   gap: .5rem;
   color: rgba(255,255,255,.85);
   font-size: var(--fs-sm);
-  padding: 0 1.5rem;
+  padding: 0 .75rem;
 }
-.hero__badge-item svg { color: var(--gold); flex-shrink: 0; }
-.hero__badge-item strong { color: var(--white); }
-.hero__badge-sep {
-  width: 1px; height: 24px;
-  background: rgba(255,255,255,.15);
-  flex-shrink: 0;
-}
+.hero__badge-card svg,
+.hero__badge-ta svg { color: var(--gold); flex-shrink: 0; }
+.hero__badge-card strong,
+.hero__badge-ta strong { color: var(--white); }
 
 /* Estrellas en el hero */
 .badge-stars {
@@ -1455,45 +1453,49 @@ address { font-style: normal; }
   .nav__actions { gap: .4rem; }
   .nav__lang { padding: .3rem .6rem; font-size: .75rem; }
 
-  /* ── Hero — ocupa toda la pantalla ── */
+  /* ── Hero ── */
   .hero {
     min-height: 100svh;
     min-height: 100vh;
     align-items: flex-start;
   }
   .hero__content {
-    text-align: left;
+    text-align: center;
     padding: 2.5rem 0 3rem;
   }
   .hero__title {
-    font-size: clamp(2rem, 8.5vw, 2.6rem);
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+    line-height: 1.18;
     letter-spacing: -.02em;
-    line-height: 1.1;
+    margin-bottom: 1rem;
   }
   .hero__subtitle {
-    font-size: .72rem;
-    letter-spacing: .11em;
-    margin: 0 0 1.5rem;
+    font-size: .75rem;
+    letter-spacing: .1em;
+    margin: 0 auto 1.75rem;
   }
+
+  /* Botones: columna, ancho completo, gap 15px */
   .hero__cta {
     flex-direction: column;
     align-items: stretch;
-    gap: .65rem;
+    gap: 15px;
     margin-bottom: 1.75rem;
   }
   .hero__cta .btn {
     width: 100%;
     max-width: none;
     justify-content: center;
-    padding: .95rem 1.5rem;
-    font-size: var(--fs-md);
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-radius: var(--r-full);
   }
 
-  /* Badges: grid 2 columnas + TripAdvisor abajo centrado */
+  /* Tarjetas de beneficios: grid 2 col + TripAdvisor fila completa */
   .hero__badges {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: .5rem;
+    gap: 12px;
     background: transparent;
     border: none;
     backdrop-filter: none;
@@ -1501,32 +1503,36 @@ address { font-style: normal; }
     padding: 0;
     width: 100%;
     border-radius: 0;
-    row-gap: .5rem;
   }
-  .hero__badge-sep { display: none; }
-  .hero__badge-item {
-    background: rgba(255,255,255,.07);
+  .hero__badge-card {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: .5rem;
+    background: rgba(255,255,255,.08);
     border: 1px solid rgba(255,255,255,.13);
-    border-radius: var(--r);
-    padding: .6rem .75rem;
-    font-size: .72rem;
-    gap: .35rem;
-    justify-content: center;
-    width: auto;
+    border-radius: 10px;
+    padding: 1rem .75rem;
+    font-size: .78rem;
   }
-  /* TripAdvisor (1er hijo) va abajo, ancho completo */
-  .hero__badge-item:nth-child(1) {
+  .hero__badge-card svg {
+    width: 24px; height: 24px;
+    color: var(--gold);
+  }
+  .hero__badge-card strong { color: var(--white); }
+  .hero__badge-ta {
     grid-column: 1 / -1;
-    order: 3;
     justify-content: center;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 10px;
+    padding: .75rem 1rem;
+    font-size: .82rem;
+    gap: .5rem;
   }
-  /* Servicio 24/7 (3er hijo) arriba derecha */
-  .hero__badge-item:nth-child(3) { order: 2; }
-  /* Precio fijo (5to hijo) arriba izquierda */
-  .hero__badge-item:nth-child(5) { order: 1; }
-
-  .hero__badge-item svg { width: 15px; height: 15px; }
-  .badge-stars svg { width: 13px; height: 13px; }
+  .hero__badge-ta strong { color: var(--white); }
+  .badge-stars svg { width: 14px; height: 14px; }
 
   /* ── Secciones generales ── */
   .section__title  { font-size: var(--fs-2xl); }
