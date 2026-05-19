@@ -406,7 +406,8 @@
           <h2 class="section__title">El Caribe Mexicano te espera</h2>
           <p class="section__desc">Playas de arena blanca, cenotes de agua cristalina, ruinas mayas y más. Te llevamos a todos los destinos de la Riviera Maya.</p>
         </header>
-        <div class="gallery__grid">
+        <div class="gallery__carousel-wrap">
+        <div class="gallery__grid" id="galleryGrid">
           <!-- columna 1: imagen alta que ocupa filas 1 y 2 -->
           <div class="gallery__item gallery__item--tall">
             <img src="Chichen%20Itza.webp" alt="Chichén Itzá - excursión privada desde Tulum" loading="lazy">
@@ -443,6 +444,13 @@
             <img src="Hotel%20dos.webp" alt="Alojamiento en Tulum - llegamos a la puerta de tu hotel" loading="lazy">
             <div class="gallery__caption"><h3>Alojamiento</h3><p>Llegamos a tu puerta</p></div>
           </div>
+        </div>
+        <button class="gallery__btn gallery__btn--prev" id="galleryPrev" aria-label="Destino anterior">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="gallery__btn gallery__btn--next" id="galleryNext" aria-label="Siguiente destino">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
         </div>
       </div>
     </section>
