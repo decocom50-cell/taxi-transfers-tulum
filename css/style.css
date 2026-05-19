@@ -509,6 +509,21 @@ address { font-style: normal; }
   transform: scale(1.06);
 }
 
+/* Ola divisora al fondo del hero */
+.hero__wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 0;
+  z-index: 2;
+}
+.hero__wave svg {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
 /* ═══════════════════════════════════════
    COTIZADOR — SECCIÓN 2 (después del hero)
 ═══════════════════════════════════════ */
@@ -1437,40 +1452,45 @@ address { font-style: normal; }
   /* Hero */
   .hero { min-height: auto; }
   .hero__title {
-    font-size: clamp(1.85rem, 9vw, 2.5rem);
+    font-size: clamp(1.55rem, 7vw, 2rem);
     letter-spacing: -.01em;
+    line-height: 1.12;
   }
   .hero__subtitle {
-    font-size: var(--fs-xs);
-    letter-spacing: .1em;
-    margin-bottom: 1.75rem;
+    font-size: .7rem;
+    letter-spacing: .12em;
+    margin-bottom: 1.5rem;
   }
-  .hero__content { padding: 2.5rem 0 3rem; }
+  .hero__content { padding: 2rem 0 3.5rem; }
   .hero__cta {
     flex-direction: column;
     align-items: center;
-    gap: .65rem;
-    margin-bottom: 2rem;
+    gap: .6rem;
+    margin-bottom: 1.5rem;
   }
   .hero__cta .btn {
     width: 100%;
-    max-width: 280px;
+    max-width: 270px;
     justify-content: center;
-    padding: .85rem 1.5rem;
+    padding: .8rem 1.25rem;
     font-size: var(--fs-md);
   }
   .hero__badges {
-    padding: .75rem .85rem;
-    gap: 0;
+    flex-direction: column;
+    align-items: center;
+    padding: .85rem 1.25rem;
+    gap: .4rem;
     border-radius: var(--r-lg);
   }
   .hero__badge-sep { display: none; }
   .hero__badge-item {
-    padding: .2rem .5rem;
-    font-size: .72rem;
-    gap: .35rem;
+    padding: .1rem 0;
+    font-size: .75rem;
+    gap: .4rem;
+    width: 100%;
+    justify-content: center;
   }
-  .hero__badge-item svg { width: 16px; height: 16px; }
+  .hero__badge-item svg { width: 15px; height: 15px; }
   .badge-stars svg { width: 13px; height: 13px; }
 
   /* Section titles */
@@ -1521,7 +1541,7 @@ address { font-style: normal; }
    RESPONSIVE — Mobile pequeño ≤480px
 ═══════════════════════════════════════ */
 @media (max-width: 480px) {
-  .hero__title { font-size: clamp(1.6rem, 9vw, 2rem); }
+  .hero__title { font-size: clamp(1.4rem, 7vw, 1.75rem); }
   .hero__badges { padding: .65rem .5rem; }
   .hero__badge-item { padding: .15rem .35rem; font-size: .68rem; }
   .gallery__grid { grid-template-columns: 1fr; gap: .5rem; }
