@@ -509,6 +509,29 @@ address { font-style: normal; }
   transform: scale(1.06);
 }
 
+/* ── Botones flechas galería (solo móvil, ver media query) ── */
+.gallery__carousel-wrap { position: relative; }
+.gallery__btn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(11,17,32,.75);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  transition: background .2s;
+}
+.gallery__btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+.gallery__btn--prev { left: .5rem; }
+.gallery__btn--next { right: .5rem; }
+
 /* Ola divisora al fondo del hero */
 .hero__wave {
   position: absolute;
@@ -1609,9 +1632,20 @@ address { font-style: normal; }
   .why-card { padding: 1.35rem; }
   .why-card__icon { font-size: 1.75rem; }
 
-  /* ── Reviews ── */
-  .reviews__carousel { padding: 0 2.5rem 3rem; }
+  /* ── Gallery flechas móvil ── */
+  .gallery__btn { display: flex; }
+
+  /* ── Reviews compactas en móvil ── */
+  .reviews__carousel { padding: 0 0 3rem; }
   .carousel__btn { width: 36px; height: 36px; }
+  .review-card { padding: 1.25rem; }
+  .review-card blockquote p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: .85rem;
+  }
 
   /* ── Footer ── */
   .footer { padding: 3rem 0 1.75rem; }
